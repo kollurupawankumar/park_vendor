@@ -1,5 +1,7 @@
 package com.parking.vendor.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +18,12 @@ public class PwVendorServiceImpl implements PwVendorService {
 	
 	@Override
 	public void insertVendor(PwVendor vendor) {
-		
-		boolean i =vendorDAO.insertVendor(vendor);
-		System.out.println(vendor.getVendorId());
+		vendorDAO.insertVendor(vendor);
+	}
+
+	@Override
+	public List<PwVendor> getAllVendors() {
+		return vendorDAO.getAllVendors();
 	}
 
 }

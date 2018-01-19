@@ -16,32 +16,22 @@ public class PwVendorDAOImpl implements PwVendorDAO {
 	@Autowired
 	MongoOperations mongoOps;
 
-
 	@Override
 	public boolean insertVendor(PwVendor vendor) {
-		try {
-			vendor.setVendorId(getVendorCount() + 1);
-			mongoOps.insert(vendor);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+		vendor.setVendorId(getVendorCount() + 1);
+		mongoOps.insert(vendor);
+		return true;
 	}
 
 	@Override
 	public boolean updateVendor(PwVendor vendor) {
-		try {
-			mongoOps.save(vendor);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+		mongoOps.save(vendor);
+		return true;
 	}
 
 	@Override
 	public List<PwVendor> getAllVendors() {
+		System.out.println("Billa :"+mongoOps.findAll(PwVendor.class).size());
 		return mongoOps.findAll(PwVendor.class);
 	}
 

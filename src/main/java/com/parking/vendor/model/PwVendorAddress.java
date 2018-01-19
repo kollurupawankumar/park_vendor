@@ -27,7 +27,12 @@ public class PwVendorAddress {
 	private String pincode;
 	private String latitude;
 	private String longitude;
-	
+	private int noOf2W;
+	private int costOf2W;
+	private int noOf4W;
+	private int costOf4W;
+	private String entryMobile;
+	private String exitMobile;
 	
 	
 	
@@ -104,6 +109,48 @@ public class PwVendorAddress {
 	}
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
+	}
+	public int getNoOf2W() {
+		return noOf2W;
+	}
+	public void setNoOf2W(int noOf2W) {
+		this.noOf2W = noOf2W;
+	}
+	public int getCostOf2W() {
+		return costOf2W;
+	}
+	public void setCostOf2W(int costOf2W) {
+		this.costOf2W = costOf2W;
+	}
+	public int getNoOf4W() {
+		return noOf4W;
+	}
+	public void setNoOf4W(int noOf4W) {
+		this.noOf4W = noOf4W;
+	}
+	public int getCostOf4W() {
+		return costOf4W;
+	}
+	public void setCostOf4W(int costOf4W) {
+		this.costOf4W = costOf4W;
+	}
+	public String getEntryMobile() {
+		return entryMobile;
+	}
+	public void setEntryMobile(String entryMobile) {
+		this.entryMobile = entryMobile;
+	}
+	public String getExitMobile() {
+		return exitMobile;
+	}
+	public void setExitMobile(String exitMobile) {
+		this.exitMobile = exitMobile;
+	}
+	@Override
+	public String toString() {
+		return "VendorAddress : [address1=" + address1 + ", address2=" + address2 + ", address3=" + address3
+				+ ", country=" + country + ", state=" + state + ", city=" + city + ", pincode=" + pincode
+				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
 	
 	

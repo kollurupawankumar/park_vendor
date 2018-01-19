@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</link>
+    <title>Hello, world!</title>
+    
+    <style type="text/css">
+    
+    
+/* Important part */
+.modal-dialog{
+    overflow-y: initial !important
+    
+}
+.modal-body{
+   
+    overflow-y: auto;
+}</style>
+  </head>
+  <body>
+  
+  <div class="container-fluid">
+   <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img th:src="@{/images/29-samplelogo.jpg}" width="60" height="60" class="d-inline-block " alt=""> </img>
+    Company Name
+  </a>
+  
+  <ul class="nav justify-content-end">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Actions</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Add Vendor</a>
+      <a class="dropdown-item" href="#">Delete Vendor</a>
+    </div>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pawan_Kolluru</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Profile</a>
+      <a class="dropdown-item" href="#">Password Change</a>
+      <a class="dropdown-item" href="#">Settings</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Logout</a>
+    </div>
+  </li>
+</ul>
+</nav>
+
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Vendor Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email Id</th>
+      <th scope="col">Corporate Ind</th>
+      <th scope="col">  </th>
+      <th scope="col">  </th>
+      <th scope="col">  </th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr th:each="vendor : ${vendors}">
+    	<th th:text="${vendor.vendorId}" scope="row"></th>
+    	<td th:text="${vendor.name}"></td>
+    	<td th:text="${vendor.emailId}"></td>
+    	<td th:text="${vendor.corporateInd}"></td>
+    	<td><button type="button" class="btn btn-danger">Delete</button></td>
+		<td><button type="button" class="btn btn-warning">Edit</button></td>
+    	
+    	<td><button type="button" class="btn btn-primary" data-toggle="modal"
+    	     
+
+th:attr="data-target='#gridModal'+${vendor.vendorId}" >
+
+  View Address
+</button> 
+
+
+<div class="modal fade" th:attr="id='gridModal'+${vendor.vendorId}"  
+tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ aria-hidden="true" >
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Address Details for Vendor Id : <span th:text="${vendor.vendorId}"></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <table class="table">
+  			<thead class="thead-light">
+    			<tr>
+      				<th scope="col">Address1</th>
+      				<th scope="col">Address2</th>
+      				<th scope="col">Address3</th>
+      				<th scope="col">Country</th>
+      				<th scope="col">State</th>
+      				<th scope="col">City</th>
+      				<th scope="col">Pincode</th>
+      				<th scope="col">latitude</th>
+      				<th scope="col">Longitude</th>
+      				<th scope="col">2W Parking Count</th>
+      				<th scope="col">2W Parking Cost</th>
+      				<th scope="col">4W Parking Count</th>
+      				<th scope="col">4W Parking Cost</th>
+    			</tr>
+  			</thead>
+  			
+  	        <tbody>
+  	        	<tr th:each="address : ${vendor.address}">
+  	        	  <td th:text="${address.address1}"> </td>
+  	        	   <td th:text="${address.address2}"> </td>
+  	        	    <td th:text="${address.address3}"> </td>
+  	        	     <td th:text="${address.country}"> </td>
+  	        	      <td th:text="${address.state}"> </td>
+  	        	       <td th:text="${address.city}"> </td>
+  	        	        <td th:text="${address.pincode}"> </td>
+  	        	         <td th:text="${address.latitude}"> </td>
+  	        	          <td th:text="${address.longitude}"> </td>
+  	        	           <td th:text="${address.noOf2W}"> </td>
+  	        	            <td th:text="${address.costOf2W}"> </td>
+  	        	             <td th:text="${address.noOf4W}"> </td>
+  	        	              <td th:text="${address.costOf4W}"> </td>
+  	        	</tr>
+  	        
+  	        
+  	        </tbody>
+       </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+  
+</div>
+   
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
