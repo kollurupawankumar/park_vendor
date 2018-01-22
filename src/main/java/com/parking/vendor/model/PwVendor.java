@@ -17,7 +17,8 @@ public class PwVendor {
 	private int vendorId;
 	
 	private Date efftDt;
-	private String name;
+	private String firstName;
+	private String lastName;
 	private String emailId;
 	private String vendorType;
 	private String password;
@@ -37,12 +38,7 @@ public class PwVendor {
 	public void setEfftDt(Date efftDt) {
 		this.efftDt = efftDt;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 	public String getEmailId() {
 		return emailId;
 	}
@@ -74,6 +70,18 @@ public class PwVendor {
 	}
 	public void setAddress(List<PwVendorAddress> address) {
 		this.address = address;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	
 	

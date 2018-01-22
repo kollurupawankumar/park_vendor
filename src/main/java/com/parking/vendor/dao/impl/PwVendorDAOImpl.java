@@ -49,4 +49,9 @@ public class PwVendorDAOImpl implements PwVendorDAO {
 			return 0;
 	}
 
+	@Override
+	public PwVendor findVendor(int vendorId) {
+		return mongoOps.findById(vendorId, PwVendor.class);
+	}
+
 }

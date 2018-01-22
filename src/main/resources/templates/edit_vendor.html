@@ -113,10 +113,96 @@
     </div>
   </div>
   
-  <button class="btn btn-primary" type="submit">Register Vendor</button>
+  <div th:if="${vendor.address != null }">
+     <table class="table">
+  			<thead class="thead-light">
+    			<tr>
+      				<th scope="col">Address1</th>
+      				<th scope="col">Address2</th>
+      				<th scope="col">Address3</th>
+      				<th scope="col">Country</th>
+      				<th scope="col">State</th>
+      				<th scope="col">City</th>
+      				<th scope="col">Pincode</th>
+      				<th scope="col">latitude</th>
+      				<th scope="col">Longitude</th>
+      				<th scope="col">2W Parking Count</th>
+      				<th scope="col">2W Parking Cost</th>
+      				<th scope="col">4W Parking Count</th>
+      				<th scope="col">4W Parking Cost</th>
+    			</tr>
+  			</thead>
+  			
+  	        <tbody>
+  	        	<tr th:each="address : ${vendor.address}">
+  	        	  <td th:text="${address.address1}"> </td>
+  	        	   <td th:text="${address.address2}"> </td>
+  	        	    <td th:text="${address.address3}"> </td>
+  	        	     <td th:text="${address.country}"> </td>
+  	        	      <td th:text="${address.state}"> </td>
+  	        	       <td th:text="${address.city}"> </td>
+  	        	        <td th:text="${address.pincode}"> </td>
+  	        	         <td th:text="${address.latitude}"> </td>
+  	        	          <td th:text="${address.longitude}"> </td>
+  	        	           <td th:text="${address.noOf2W}"> </td>
+  	        	            <td th:text="${address.costOf2W}"> </td>
+  	        	             <td th:text="${address.noOf4W}"> </td>
+  	        	              <td th:text="${address.costOf4W}"> </td>
+  	        	</tr>
+  	        
+  	        
+  	        </tbody>
+       </table>
+  
+  </div>
+  
+   
+  <button class="btn btn-primary" type="submit">Update Vendor</button>
+  
+   
 </form>
+<br />
+<button type="button" class="btn btn-primary" id="newAddress" >
+Add New Address
+</button> 
 
-<script>
+<div id="newAddDiv">
+<form class="needs-validation"  th:action="@{/parkwisely/mvc/vendor/addAddress(vendorId=${vendor.vendorId})}" 
+  method="POST" th:object="${vendorAdd}" >
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="firstName">Country</label>
+      <input type="text" class="form-control" id="country"  name="country"
+       placeholder="First name" th:value="${vendorAdd.country}" required="true"> </input>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+</div>
+
+
+
+
+</div>
+   
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+  
+  <script>
+
+$( document ).ready(function() {
+   $("#newAddDiv").hide();
+   $("#newAddress").click(function(){
+	   $("#newAddDiv").show();
+   });
+});
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
@@ -137,12 +223,4 @@
   }, false);
 })();
 </script>
-</div>
-   
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
 </html>

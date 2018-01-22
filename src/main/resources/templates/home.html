@@ -28,15 +28,14 @@
   <div class="container-fluid">
    <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img th:src="@{/images/29-samplelogo.jpg}" width="60" height="60" class="d-inline-block " alt=""> </img>
-    Company Name
+    <img th:src="@{/images/new_logo2.jpg}"  height="60" class="d-inline-block " alt=""> </img>
   </a>
   
   <ul class="nav justify-content-end">
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Actions</a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Add Vendor</a>
+      <a class="dropdown-item" th:href="@{/parkwisely/mvc/vendor/add}">Add Vendor</a>
       <a class="dropdown-item" href="#">Delete Vendor</a>
     </div>
   </li>
@@ -58,7 +57,8 @@
   <thead class="thead-light">
     <tr>
       <th scope="col">Vendor Id</th>
-      <th scope="col">Name</th>
+      <th scope="col">First Name</th>
+       <th scope="col">Last Name</th>
       <th scope="col">Email Id</th>
       <th scope="col">Corporate Ind</th>
       <th scope="col">  </th>
@@ -70,11 +70,12 @@
   
     <tr th:each="vendor : ${vendors}">
     	<th th:text="${vendor.vendorId}" scope="row"></th>
-    	<td th:text="${vendor.name}"></td>
+    	<td th:text="${vendor.firstName}"></td>
+    	<td th:text="${vendor.lastName}"></td>
     	<td th:text="${vendor.emailId}"></td>
     	<td th:text="${vendor.corporateInd}"></td>
     	<td><button type="button" class="btn btn-danger">Delete</button></td>
-		<td><button type="button" class="btn btn-warning">Edit</button></td>
+		<td><a  th:href="@{/parkwisely/mvc/vendor/edit(vendorId=${vendor.vendorId})}">Edit</a></td>
     	
     	<td><button type="button" class="btn btn-primary" data-toggle="modal"
     	     

@@ -3,8 +3,6 @@ package com.parking.vendor.dto;
 import java.util.Date;
 import java.util.List;
 
-import com.parking.vendor.model.PwVendorAddress;
-
 public class PwVendorDTO {
 	
 	private Date efftDt;

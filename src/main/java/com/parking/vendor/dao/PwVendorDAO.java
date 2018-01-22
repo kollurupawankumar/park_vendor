@@ -18,5 +18,7 @@ public interface PwVendorDAO {
 	public List<PwVendorAddress> getAddressForVendor(int vendorId);
 	
 	public int getVendorCount();
+	
+	public PwVendor findVendor(int vendorId);
 
 }

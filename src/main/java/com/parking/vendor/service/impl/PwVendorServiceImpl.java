@@ -26,4 +26,15 @@ public class PwVendorServiceImpl implements PwVendorService {
 		return vendorDAO.getAllVendors();
 	}
 
+	@Override
+	public PwVendor findVendor(int vendorId) {
+		return vendorDAO.findVendor(vendorId);
+	}
+
+	@Override
+	public void updateVendor(PwVendor vendor) {
+		vendorDAO.updateVendor(vendor);
+		
+	}
+
 }
