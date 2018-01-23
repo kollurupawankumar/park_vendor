@@ -20,5 +20,7 @@ public interface PwVendorDAO {
 	public int getVendorCount();
 	
 	public PwVendor findVendor(int vendorId);
+	
+	public boolean addAddress(PwVendorAddress address);
 
 }

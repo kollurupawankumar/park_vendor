@@ -3,7 +3,11 @@ package com.parking.vendor.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Generated;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Reference;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * 
@@ -23,6 +27,7 @@ public class PwVendor {
 	private String vendorType;
 	private String password;
 	private Boolean corporateInd = true;
+	@DBRef
 	private List<PwVendorAddress> address;
 	
 	public int getVendorId() {

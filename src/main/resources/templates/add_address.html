@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- required="true" meta tags -->
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</link>
+    <title>Add Vendor Address</title>
+    
+    <style type="text/css">
+    
+    
+/* Important part */
+.modal-dialog{
+    overflow-y: initial !important
+    
+}
+.modal-body{
+   
+    overflow-y: auto;
+}</style>
+  </head>
+  <body>
+  
+  <div class="container-fluid">
+   <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img th:src="@{/images/new_logo2.jpg}"  height="60" class="d-inline-block " alt=""> </img>
+  </a>
+  
+  <ul class="nav justify-content-end">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Actions</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" th:href="@{/parkwisely/mvc/vendor/home}">Home</a>
+      <a class="dropdown-item" href="#">Add Vendor</a>
+      <a class="dropdown-item" href="#">Delete Vendor</a>
+    </div>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pawan_Kolluru</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Profile</a>
+      <a class="dropdown-item" href="#">Password Change</a>
+      <a class="dropdown-item" href="#">Settings</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Logout</a>
+    </div>
+  </li>
+</ul>
+</nav>
+
+<form class="needs-validation"  th:action="@{/parkwisely/mvc/vendor/addAddress(vendorId=${vendorId})}" 
+  method="POST" th:object="${address}" >
+  
+  <div class="form-row">
+  
+  	<div class="col-md-4 mb-3">
+  	<label for="address1">Address1</label>
+  	<input type="text" class="form-control" id="address1"  name="address1"
+       placeholder="Address -1 " th:value="${address.address1}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  	
+  	<div class="col-md-4 mb-3">
+  	<label for="address1">Address2</label>
+  	<input type="text" class="form-control" id="address2"  name="address2"
+       placeholder="Address -2" th:value="${address.address2}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  	
+  	
+  	<div class="col-md-4 mb-3">
+  	<label for="address1">Address3</label>
+  	<input type="text" class="form-control" id="address3"  name="address3"
+       placeholder="Address -1 " th:value="${address.address1}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  
+  </div>
+  
+  <div class="form-row">
+  
+  	<div class="col-md-4 mb-3">
+  	<label for="address1">City</label>
+  	<input type="text" class="form-control" id="city"  name="city"
+       placeholder="Enter City" th:value="${address.city}" required="true" />
+  	
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  	
+  	<div class="col-md-4 mb-3">
+  	<label for="address1">State</label>
+  	<input type="text" class="form-control" id="state"  name="state"
+       placeholder="Enter State" th:value="${address.state}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	
+  	</div>
+  	
+  	
+  	<div class="col-md-4 mb-3">
+  	<label for="address1">Country</label>
+  	<input type="text" class="form-control" id="country"  name="country"
+       placeholder="Address -1 " th:value="${address.country}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  
+  </div>
+  
+  
+  <div class="form-row">
+  
+  	<div class="col-md-4 mb-3">
+  	<label for="address1">Pincode</label>
+  	<input type="text" class="form-control" id="pincode"  name="pincode"
+       placeholder="Enter pincode " th:value="${address.pincode}" required="true" />
+  	
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  	
+  	<div class="col-md-4 mb-3">
+  	<label for="address1">Latitude</label>
+  	<input type="text" class="form-control" id="latitude"  name="latitude"
+       placeholder="Enter latitude" th:value="${address.latitude}" required="true" />
+  	
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  	
+  	
+  	<div class="col-md-4 mb-3">
+  	<label for="address1">Country</label>
+  	<input type="text" class="form-control" id="longitude"  name="longitude"
+       placeholder="Enter Longitude" th:value="${address.longitude}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  
+  </div>
+  
+  <div class="form-row">
+  
+  	<div class="col-md-6 mb-3">
+  	<label for="address1">No of 2W Parkings</label>
+  	<input type="text" class="form-control" id="noOf2W"  name="noOf2W"
+       placeholder="Enter No of 2W Parking " th:value="${address.noOf2W}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  	
+  	<div class="col-md-6 mb-3">
+  	<label for="address1">Cost of 2W Parking(per unit)</label>
+  	<input type="text" class="form-control" id="costOf2W"  name="costOf2W"
+       placeholder="Enter Cost" th:value="${address.costOf2W}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  
+  </div>
+  
+  
+  <div class="form-row">
+  
+  	<div class="col-md-6 mb-3">
+  	<label for="address1">No of 4W Parkings</label>
+  	<input type="text" class="form-control" id="noOf4W"  name="noOf4W"
+       placeholder="Enter No of 4W Parking " th:value="${address.noOf4W}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	
+  	</div>
+  	
+  	<div class="col-md-6 mb-3">
+  	<label for="address1">Cost of 4W Parking(per unit)</label>
+  	<input type="text" class="form-control" id="costOf4W"  name="costOf4W"
+       placeholder="Enter Cost" th:value="${address.costOf4W}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  
+  </div>
+  
+   <div class="form-row">
+  
+  	<div class="col-md-6 mb-3">
+  	<label for="address1">Entry Mobile Number</label>
+  	<input type="text" class="form-control" id="entryMobile"  name="entryMobile"
+       placeholder="Enter Entry Mobile Number" th:value="${address.entryMobile}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  	
+  	<div class="col-md-6 mb-3">
+  	<label for="address1">Exit Mobile Number</label>
+  	<input type="text" class="form-control" id="exitMobile"  name="exitMobile"
+       placeholder="Enter Exit Mobile Number" th:value="${address.exitMobile}" required="true" />
+  	<div class="invalid-feedback">
+         Its a Mandatory Field
+        </div>
+  	</div>
+  
+  </div>
+  
+  
+   
+  <button class="btn btn-primary" type="submit">Register Vendor</button>
+</form>
+
+
+<script>
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+</div>
+   
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

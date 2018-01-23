@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.parking.vendor.dao.PwVendorDAO;
 import com.parking.vendor.model.PwVendor;
+import com.parking.vendor.model.PwVendorAddress;
 import com.parking.vendor.service.PwVendorService;
 
 
@@ -35,6 +36,12 @@ public class PwVendorServiceImpl implements PwVendorService {
 	public void updateVendor(PwVendor vendor) {
 		vendorDAO.updateVendor(vendor);
 		
+	}
+
+	@Override
+	public boolean insertAddress(PwVendorAddress vendor) {
+		vendorDAO.addAddress(vendor);
+		return true;
 	}
 
 }

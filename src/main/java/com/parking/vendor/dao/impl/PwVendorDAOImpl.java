@@ -53,5 +53,17 @@ public class PwVendorDAOImpl implements PwVendorDAO {
 	public PwVendor findVendor(int vendorId) {
 		return mongoOps.findById(vendorId, PwVendor.class);
 	}
+	
+	private int getAddressCount() {
+		int i = mongoOps.findAll(PwVendorAddress.class).size();
+			return i+1;
+	}
+
+	@Override
+	public boolean addAddress(PwVendorAddress address) {
+		address.setAddId(getAddressCount());
+		mongoOps.insert(address);
+		return true;
+	}
 
 }

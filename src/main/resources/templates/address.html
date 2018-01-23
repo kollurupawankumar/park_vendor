@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	</link>
-    <title>Vendor Update</title>
+    <title>Add Vendor Address</title>
     
     <style type="text/css">
     
@@ -52,75 +52,7 @@
   </li>
 </ul>
 </nav>
-<div>
 
-
-</div>
-
-
-<form class="needs-validation"  th:action="@{/parkwisely/mvc/vendor/update}" 
-  method="POST" th:object="${vendor}" >
-  <div class="form-row">
-  <input type="hidden" id="vendorId" name="vendorId" th:value="${vendor.vendorId}"></input>
-    <div class="col-md-4 mb-3">
-      <label for="firstName">First name</label>
-      <input type="text" class="form-control" id="firstName"  name="firstName"
-       placeholder="First name" th:value="${vendor.firstName}" required="true"> </input>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="lastName">Last name</label>
-      <input type="text" class="form-control" id="lastName" name="lastName" 
-      placeholder="Last name" th:value="${vendor.lastName}" required="true"></input>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="emailId">Email Id</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend">@</span>
-        </div>
-        <input type="text" class="form-control" id="emailId" name="emailId"
-        placeholder="Email Id" aria-describedby="inputGroupPrepend"
-        th:value="${vendor.emailId}" required="true"></input>
-        <div class="invalid-feedback">
-          Please choose a email id.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="password">Password</label>
-      <input type="text" class="form-control" id="password" name="password"
-      placeholder="Password" th:value="${vendor.password}" required="true"></input>
-      <div class="invalid-feedback">
-        Password cannot be blank.
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="vendorType">Vendor Type</label>
-      <input type="text" class="form-control" id="vendorType" name="vendorType" 
-      placeholder="Vendor Type" th:value="${vendor.vendorType}" required="true"></input>
-      <div class="invalid-feedback">
-        Please provide a vendor Type
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="corporateInd">Corporate Indicator</label>
-      <input type="text" class="form-control" id="corporateInd" name="corporateInd" 
-      placeholder="Corporate Indicator" th:value="${vendor.corporateInd}" required="true"></input>
-      <div class="invalid-feedback">
-        Please provide a valid corporate Indicator.
-      </div>
-    </div>
-  </div>
-  
-  <div th:if="${vendor.address[0] != null }">
      <table class="table">
   			<thead class="thead-light">
     			<tr>
@@ -138,11 +70,12 @@
       				<th scope="col">4W Parking Count</th>
       				<th scope="col">4W Parking Cost</th>
       				<th scope="col"> </th>
+      				<th scope="col"> </th>
     			</tr>
   			</thead>
   			
   	        <tbody>
-  	        	<tr th:each="address : ${vendor.address}">
+  	        	<tr th:each="address : ${addressList}">
   	        	  <td th:text="${address.address1}"> </td>
   	        	   <td th:text="${address.address2}"> </td>
   	        	    <td th:text="${address.address3}"> </td>
@@ -156,45 +89,17 @@
   	        	            <td th:text="${address.costOf2W}"> </td>
   	        	             <td th:text="${address.noOf4W}"> </td>
   	        	              <td th:text="${address.costOf4W}"> </td>
+  	        	             <td><button type="button" class="btn btn-danger">Delete</button></td>
+		<td><a ><button type="button" class="btn btn-warning">Edit</button></a></td>
   	        	</tr>
   	        
   	        
   	        </tbody>
        </table>
-  
-  </div>
-  
-   
-  <button class="btn btn-primary" type="submit">Update Vendor</button>
-  <a th:href="@{/parkwisely/mvc/vendor/addAddress(vendorId=${vendor.vendorId})}"><button type="button" class="btn btn-primary" id="newAddress" >
-Add Address
-</button></a>
-
- <a th:href="@{/parkwisely/mvc/vendor/modifyAddress(vendorId=${vendor.vendorId})}"><button type="button" class="btn btn-primary" id="newAddress" >
-Modify Address
-</button></a>
-   
-</form>
-<br />
 
 
 
-
-
-
-
-</div>
-   
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-  
-  <script>
-
-
+<script>
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
@@ -215,4 +120,12 @@ Modify Address
   }, false);
 })();
 </script>
+</div>
+   
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>

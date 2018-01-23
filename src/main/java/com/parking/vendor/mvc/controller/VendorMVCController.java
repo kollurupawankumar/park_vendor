@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.parking.vendor.model.PwVendor;
@@ -27,6 +28,9 @@ public class VendorMVCController {
 	public ModelAndView VendorHome(Model model) {
 		try {
 			model.addAttribute("vendors", vendorService.getAllVendors());
+			for (PwVendor ven : vendorService.getAllVendors()){
+				System.out.println("Pawan :"+ ven.getAddress());
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -47,6 +51,34 @@ public class VendorMVCController {
 		return new ModelAndView("redirect:/parkwisely/mvc/vendor/home");
 	}
 	
+	@RequestMapping(method = RequestMethod.POST, value="/update")
+	public ModelAndView updateVendor(@ModelAttribute PwVendor vendor, @ModelAttribute List<PwVendorAddress> address){
+		PwVendor oldVendor  = vendorService.findVendor(vendor.getVendorId());
+		vendor.setAddress(oldVendor.getAddress());
+		vendorService.updateVendor(vendor);
+		return new ModelAndView("redirect:/parkwisely/mvc/vendor/home");
+	}
+	
+
+	@RequestMapping(method = RequestMethod.GET, value="/addAddress")
+	public ModelAndView addAddress(Model model, int vendorId){
+		model.addAttribute("address", new PwVendorAddress());
+		model.addAttribute("vendorId", vendorId);
+		return new ModelAndView("add_address");
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/modifyAddress")
+	public ModelAndView modifyAddress(Model model, int vendorId){
+		System.out.println("Pawan vendor Id "+ vendorId);
+		PwVendor vendor =  vendorService.findVendor(vendorId);
+		List<PwVendorAddress> addressList = vendor.getAddress();
+		System.out.println(addressList.size());
+		model.addAttribute("addressList", addressList);
+		model.addAttribute("vendorId", vendorId);
+		return new ModelAndView("address");
+	}
+	
+	
 	@RequestMapping(method = RequestMethod.POST, value="/addAddress")
 	public ModelAndView addVendorAddress(@ModelAttribute PwVendorAddress address, int vendorId){
 		PwVendor vendor =  vendorService.findVendor(vendorId);
@@ -56,6 +88,7 @@ public class VendorMVCController {
 		}
 		addressList.add(address);
 		vendor.setAddress(addressList);
+		vendorService.insertAddress(address);
 		vendorService.updateVendor(vendor);
 		return new ModelAndView("redirect:/parkwisely/mvc/vendor/edit?vendorId="+vendorId);
 	}

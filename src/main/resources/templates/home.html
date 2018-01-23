@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	</link>
-    <title>Hello, world!</title>
+    <title>Vendor Home</title>
     
     <style type="text/css">
     
@@ -32,9 +32,11 @@
   </a>
   
   <ul class="nav justify-content-end">
+  
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Actions</a>
     <div class="dropdown-menu">
+      <a class="dropdown-item" th:href="@{/parkwisely/mvc/vendor/home}">Home</a>
       <a class="dropdown-item" th:href="@{/parkwisely/mvc/vendor/add}">Add Vendor</a>
       <a class="dropdown-item" href="#">Delete Vendor</a>
     </div>
@@ -75,7 +77,7 @@
     	<td th:text="${vendor.emailId}"></td>
     	<td th:text="${vendor.corporateInd}"></td>
     	<td><button type="button" class="btn btn-danger">Delete</button></td>
-		<td><a  th:href="@{/parkwisely/mvc/vendor/edit(vendorId=${vendor.vendorId})}">Edit</a></td>
+		<td><a  th:href="@{/parkwisely/mvc/vendor/edit(vendorId=${vendor.vendorId})}"><button type="button" class="btn btn-warning">Edit</button></a></td>
     	
     	<td><button type="button" class="btn btn-primary" data-toggle="modal"
     	     
@@ -117,8 +119,9 @@ tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     			</tr>
   			</thead>
   			
-  	        <tbody>
+  	        <tbody >
   	        	<tr th:each="address : ${vendor.address}">
+  	        	<div th:if="${address != null}">
   	        	  <td th:text="${address.address1}"> </td>
   	        	   <td th:text="${address.address2}"> </td>
   	        	    <td th:text="${address.address3}"> </td>
@@ -132,6 +135,7 @@ tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   	        	            <td th:text="${address.costOf2W}"> </td>
   	        	             <td th:text="${address.noOf4W}"> </td>
   	        	              <td th:text="${address.costOf4W}"> </td>
+  	        	  </div>
   	        	</tr>
   	        
   	        

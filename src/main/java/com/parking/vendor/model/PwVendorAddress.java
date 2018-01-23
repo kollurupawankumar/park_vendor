@@ -2,7 +2,8 @@ package com.parking.vendor.model;
 
 import java.util.Date;
 
-import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
 
@@ -12,9 +13,11 @@ import org.springframework.data.mongodb.core.index.Indexed;
  *
  */
 
+@Document
 public class PwVendorAddress {
 	
-	@Indexed
+	@Id
+	private int addId;
 	private Date efftDt;
 	private Boolean status;
 	private String premiseType;
@@ -37,6 +40,13 @@ public class PwVendorAddress {
 	
 	
 	
+	
+	public int getAddId() {
+		return addId;
+	}
+	public void setAddId(int addId) {
+		this.addId = addId;
+	}
 	public Date getEfftDt() {
 		return efftDt;
 	}

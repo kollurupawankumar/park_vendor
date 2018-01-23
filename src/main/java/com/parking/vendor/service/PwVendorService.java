@@ -3,6 +3,7 @@ package com.parking.vendor.service;
 import java.util.List;
 
 import com.parking.vendor.model.PwVendor;
+import com.parking.vendor.model.PwVendorAddress;
 
 
 public interface PwVendorService {
@@ -15,4 +16,5 @@ public interface PwVendorService {
 	
 	public void updateVendor(PwVendor vendor);
 
+	public boolean insertAddress(PwVendorAddress vendor); 
 }
