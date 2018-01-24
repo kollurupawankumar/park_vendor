@@ -76,7 +76,11 @@
     	<td th:text="${vendor.lastName}"></td>
     	<td th:text="${vendor.emailId}"></td>
     	<td th:text="${vendor.corporateInd}"></td>
-    	<td><button type="button" class="btn btn-danger">Delete</button></td>
+    	<td>
+    		<a th:href="@{/parkwisely/mvc/vendor/deleteVendor(vendorId=${vendor.vendorId})}">
+    			<button type="button" class="btn btn-danger">Delete</button>
+    		</a>
+    	</td>
 		<td><a  th:href="@{/parkwisely/mvc/vendor/edit(vendorId=${vendor.vendorId})}"><button type="button" class="btn btn-warning">Edit</button></a></td>
     	
     	<td><button type="button" class="btn btn-primary" data-toggle="modal"

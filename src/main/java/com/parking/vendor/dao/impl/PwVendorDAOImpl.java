@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.parking.vendor.dao.PwVendorDAO;
@@ -63,6 +65,31 @@ public class PwVendorDAOImpl implements PwVendorDAO {
 	public boolean addAddress(PwVendorAddress address) {
 		address.setAddId(getAddressCount());
 		mongoOps.insert(address);
+		return true;
+	}
+
+	@Override
+	public PwVendorAddress findAddress(int addressId) {
+		return mongoOps.findById(addressId, PwVendorAddress.class);
+	}
+
+	@Override
+	public boolean updateAddress(PwVendorAddress address) {
+		mongoOps.save(address);
+		return true;
+	}
+
+	@Override
+	public boolean deleteVendor(int vendorId) {
+		Query q = new Query(Criteria.where("vendorId").is(vendorId));
+		mongoOps.remove(q,PwVendor.class);
+		return true;
+	}
+
+	@Override
+	public boolean deleteVendorAddress(int addressId) {
+		Query q = new Query(Criteria.where("addId").is(addressId));
+		mongoOps.remove(q,PwVendorAddress.class);
 		return true;
 	}
 

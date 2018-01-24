@@ -73,9 +73,24 @@ public class VendorMVCController {
 		PwVendor vendor =  vendorService.findVendor(vendorId);
 		List<PwVendorAddress> addressList = vendor.getAddress();
 		System.out.println(addressList.size());
+		System.out.println(addressList);
 		model.addAttribute("addressList", addressList);
 		model.addAttribute("vendorId", vendorId);
 		return new ModelAndView("address");
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/editAddress")
+	public ModelAndView editAddress(Model model, int addressId,int vendorId){
+		PwVendorAddress address =  vendorService.getAddress(addressId);
+		model.addAttribute("address", address);
+		model.addAttribute("vendorId", vendorId);
+		return new ModelAndView("edit_address");
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/editAddress")
+	public ModelAndView editAddress(@ModelAttribute PwVendorAddress address,int vendorId){
+		vendorService.updateAddress(address);
+		return new ModelAndView("redirect:/parkwisely/mvc/vendor/modifyAddress?vendorId="+vendorId);
 	}
 	
 	
@@ -99,6 +114,19 @@ public class VendorMVCController {
 		model.addAttribute("vendor", vendor);
 		model.addAttribute("vendorAdd", new PwVendorAddress());
 		return new ModelAndView("edit_vendor");
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/deleteVendor")
+	public ModelAndView deleteVendor(Model model, int vendorId){
+		vendorService.deleteVendor(vendorId);
+		return new ModelAndView("redirect:/parkwisely/mvc/vendor/home");
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/deleteAddress")
+	public ModelAndView deleteVendorAddress(Model model, int vendorId, int addressId){
+		System.out.println("Entered to delete address Id");
+		vendorService.deleteVendorAddress(addressId);
+		return new ModelAndView("redirect:/parkwisely/mvc/vendor/modifyAddress?vendorId="+vendorId);
 	}
 
 }

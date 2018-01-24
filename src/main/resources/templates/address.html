@@ -76,6 +76,7 @@
   			
   	        <tbody>
   	        	<tr th:each="address : ${addressList}">
+  	        	<div th:if="${address != null}">
   	        	  <td th:text="${address.address1}"> </td>
   	        	   <td th:text="${address.address2}"> </td>
   	        	    <td th:text="${address.address3}"> </td>
@@ -89,8 +90,14 @@
   	        	            <td th:text="${address.costOf2W}"> </td>
   	        	             <td th:text="${address.noOf4W}"> </td>
   	        	              <td th:text="${address.costOf4W}"> </td>
-  	        	             <td><button type="button" class="btn btn-danger">Delete</button></td>
-		<td><a ><button type="button" class="btn btn-warning">Edit</button></a></td>
+  	        	             <td>
+  	        	             <a th:href="@{/parkwisely/mvc/vendor/deleteAddress(vendorId=${vendorId},addressId=${address.addId})}">
+  	        	             <button type="button" class="btn btn-danger">Delete</button>
+  	        	             </a>
+  	        	           
+  	        	             </td>
+		<td><a th:href="@{/parkwisely/mvc/vendor/editAddress(vendorId=${vendorId},addressId=${address.addId})}" ><button type="button" class="btn btn-warning">Edit</button></a></td>
+  	        	</div>  
   	        	</tr>
   	        
   	        

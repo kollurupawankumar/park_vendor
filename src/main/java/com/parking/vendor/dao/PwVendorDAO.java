@@ -22,5 +22,13 @@ public interface PwVendorDAO {
 	public PwVendor findVendor(int vendorId);
 	
 	public boolean addAddress(PwVendorAddress address);
+	
+	public PwVendorAddress findAddress(int addressId);
+	
+	public boolean updateAddress(PwVendorAddress address);
+	
+	public boolean deleteVendor(int vendorId);
+	
+	public boolean deleteVendorAddress(int addressId);
 
 }

@@ -39,9 +39,37 @@ public class PwVendorServiceImpl implements PwVendorService {
 	}
 
 	@Override
-	public boolean insertAddress(PwVendorAddress vendor) {
-		vendorDAO.addAddress(vendor);
+	public boolean insertAddress(PwVendorAddress address) {
+		vendorDAO.addAddress(address);
 		return true;
 	}
+
+	@Override
+	public PwVendorAddress getAddress(int addressId) {
+		return vendorDAO.findAddress(addressId);
+	}
+
+	@Override
+	public boolean updateAddress(PwVendorAddress address) {
+		return vendorDAO.updateAddress(address);
+	}
+
+	@Override
+	public boolean deleteVendor(int vendorId) {
+		PwVendor vendor = vendorDAO.findVendor(vendorId);
+		for (PwVendorAddress add : vendor.getAddress()){
+			vendorDAO.deleteVendorAddress(add.getAddId());
+		}
+		vendorDAO.deleteVendor(vendorId);
+		return true;
+	}
+
+	@Override
+	public boolean deleteVendorAddress(int addressId) {
+		return vendorDAO.deleteVendorAddress(addressId);
+		
+	}
+
+	
 
 }
