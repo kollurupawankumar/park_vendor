@@ -39,3 +39,6 @@ The starting page : http://localhost:8080/parkwisely/mvc/vendor/home
 
 
 
+# Future 
+1. Adding authentication
+2. Adding validations
