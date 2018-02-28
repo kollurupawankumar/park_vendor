@@ -17,3 +17,9 @@ Please see the following URL.
 The starting page : http://localhost:8080/parkwisely/mvc/vendor/home
 
 
+
+# Sample Images 
+1. Home page 
+![Alt text](app_images/home.png?raw=true "Home")
+
+
